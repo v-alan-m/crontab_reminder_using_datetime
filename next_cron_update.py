@@ -16,11 +16,6 @@ curr_year = dt.datetime.now().year
 curr_month = dt.datetime.now().month
 curr_day = dt.datetime.now().day
 
-len_argv = len(sys.argv)
-# Might care why, don't care what
-if len(sys.argv) > 1:
-    time_string = sys.argv[1]
-
 def datetime_format(time_string):
     """Check the if the time arguement is the correct format, and converts it into a dt.datetime object for use later."""
     try:
@@ -54,8 +49,13 @@ def next_update():
 
 # Have the time string format checked, and if the format is correct then print cron times
 def main():
+    len_argv = len(sys.argv)
+
     if lev_argv != 2:
         print("Expected a single argument in HH:MM format, eg 16:10.")
+        exit(1)
+
+    time_string = sys.argv[1]
     if datetime_format(time_string):
         next_update()
 
