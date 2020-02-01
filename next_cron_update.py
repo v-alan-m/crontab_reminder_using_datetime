@@ -65,9 +65,8 @@ def next_update():
 
 # Have the time string format checked, and if the format is correct then print cron times
 def main():
-    if argv_num_check(len_argv):
-        if datetime_format(time_string):
-            next_update()
+    if len_argv == 2 and datetime_format(time_string):
+        next_update()
 
 if __name__ == "__main__":
     main()
