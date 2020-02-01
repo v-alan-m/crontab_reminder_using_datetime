@@ -21,17 +21,6 @@ len_argv = len(sys.argv)
 if len(sys.argv) > 1:
     time_string = sys.argv[1]
 
-# Check if the number of command line arguments provided is correct, provides hints regarding format
-def argv_num_check(len_argv):
-    if len_argv > 2:
-        print("Only a single time arguement is required in the HH:MM format, E.g. 16:10")
-    elif len_argv < 2:
-        print("A time arguement is required in the following format: HH:MM, E.g. 16:10")
-    else:
-        print("Please exit the program and type in < followed by the input file name: E.g < crontab")
-        return True
-    # What are all possible return values from this function?
-
 def datetime_format(time_string):
     """Check the if the time arguement is the correct format, and converts it into a dt.datetime object for use later."""
     try:
@@ -65,7 +54,9 @@ def next_update():
 
 # Have the time string format checked, and if the format is correct then print cron times
 def main():
-    if len_argv == 2 and datetime_format(time_string):
+    if lev_argv != 2:
+        print("Expected a single argument in HH:MM format, eg 16:10.")
+    if datetime_format(time_string):
         next_update()
 
 if __name__ == "__main__":
